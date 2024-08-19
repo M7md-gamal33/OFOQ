@@ -303,12 +303,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .box-data{
   width: 75%;
-  height: 85vh;
+  height: 90vh;
   background-color: #FFFFFF;
+  overflow:auto ;
 }
 
 .under-line100{
@@ -346,9 +348,9 @@ body {
   position: relative;
 }
 
-.input-group-annual i{
+.input-group-annual .fa-angle-down{
   position: absolute;
-  color: #767679 !important;
+  color: #767977 !important;
   opacity: 0.6;
 }
 
@@ -361,18 +363,178 @@ body {
   border: #F0F3F6 2px solid;
 }
 
+
+@media (max-width: 1070px) {.input-group-annual input {
+  font-size: 15px;
+}  }
+@media (max-width: 1025px) {.input-group-annual input {
+  font-size: 14px;
+}  }
+@media (max-width: 977px) {.input-group-annual input {
+  font-size: 13px;
+}  }
+@media (max-width: 930px) {.input-group-annual input {
+  font-size: 12px;
+}  }
+@media (max-width: 890px) {.input-group-annual input {
+  font-size: 11px;
+}  }
+@media (max-width: 850px) {.input-group-annual input {
+  font-size: 10px;
+}  }
+@media (max-width: 800px) {.input-group-annual input {
+  font-size: 9px;
+}  }
+@media (max-width: 767px) {.input-group-annual input {
+  font-size: 14px;
+}  }
+@media (max-width: 665px) {.input-group-annual input {
+  font-size: 12px;
+}  }
+@media (max-width: 600px) {.input-group-annual input {
+  font-size: 10px;
+}  }
+@media (max-width: 540px) {.input-group-annual input {
+  font-size: 8px;
+}  }
+
+
 .input-group-annual input[disabled] {
   cursor: auto;
 }
 
-.annul-date{
-  width: 100%;
-  min-height: 100px;
-  background-color: #25b87d;
+.custom-date-range {
+  height: 319px; /* يمكنك تعديل هذا الارتفاع حسب الحاجة */
+  overflow: auto; /* لإخفاء أي محتوى زائد عن الارتفاع المحدد */
+  border-radius: 5PX;
+  padding-top: 1PX;
+}
+
+.input-group-annual .fa-calendar-days{
+  position: absolute;
+  color: #29cc8b !important;
+  opacity: 0.6;
+  font-size: large;
 }
 
 
 
+
+
+/*!     "Textarea البتاع الي شبة الـ"      ReactQuill  ديه حاجــــات الــ   */
+
+.custom-quill-editor {
+  margin-bottom: 40px;
+}
+
+/* CSS لتحكم في المسافة بين الأدوات في شريط الأدوات */
+.custom-quill-toolbar .ql-toolbar .ql-formats button {
+  margin-right: 20px; /* المسافة بين الأزرار داخل المجموعة الواحدة */
+  margin-left: 20px;
+}
+.custom-quill-toolbar .ql-toolbar .ql-formats {
+  padding: 10px 0px 10px 0px; /* المسافة بين مجموعات الأدوات */
+}
+
+.custom-quill-editor .ql-container {
+  border: 2px solid #4CAF50; /* تخصيص الحدود بلون محدد (مثلاً أخضر) */
+  border-radius: 8px; /* إضافة زوايا دائرية */
+}
+
+.ql-toolbar.ql-snow{
+  border: 2px solid #F0F3F6 !important; /* تخصيص الحدود بلون محدد (مثلاً أخضر) */
+  border-radius: 15px; /* إضافة زوايا دائرية */
+  background-color: #FCFCFD !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 1px solid #F0F3F6 !important;
+  height: 60px;
+}
+
+.ql-container.ql-snow{
+  height: 120px;
+  background-color: #FCFCFD !important;
+  border-radius: 15px; /* إضافة زوايا دائرية */
+  border: 2px solid #F0F3F6 !important; /* تخصيص الحدود بلون محدد (مثلاً أخضر) */
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: 0 !important;
+  z-index: 0;
+}
+
+
+.custom-quill-toolbar .ql-toolbar .ql-formats button .ql-stroke {
+  stroke:#98A9BC !important; /* هذا للتحكم في لون الأيقونات التي تعتمد على خط الرسم */
+}
+
+.custom-quill-toolbar .ql-toolbar .ql-formats button .ql-fill {
+  fill: #98A9BC !important; /* هذا للتحكم في لون الأيقونات التي تعتمد على تعبئة الألوان */
+}
+
+
+/* تغيير اللون عند النقر (حالة النقر) */
+.custom-quill-toolbar .ql-toolbar .ql-formats button.ql-active .ql-stroke,
+.custom-quill-toolbar .ql-toolbar .ql-formats button.ql-active .ql-fill {
+  stroke: #007BFF !important; /* اللون الجديد للأيقونات عند النقر */
+}
+
+@media (max-width: 1080px) { /* تعديل لعرض الأزرار على الشاشات الصغيرة */
+  .custom-quill-toolbar .ql-toolbar .ql-formats {
+    padding: 0px;
+  }}
+
+/*!     "Textarea البتاع الي شبة الـ"      ReactQuill  ديه حاجــــات الــ   */
+
+
+
+/*!   Annual Leave Request في ال  button اخــــــــــــــــــــــر اتنـــــــــين */
+.uper-line1{
+  position: relative;
+}
+
+.uper-line1::after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  margin-bottom: 5px;
+  bottom: 100%;
+  left: 0;
+  background-color: #44444F;
+  opacity: 0.1;
+}
+
+.btns-of-annualRequest{
+  padding: 0px 0px;
+}
+
+.btns-of-annualRequest .btn1
+{
+  width: 100px;
+  background-color: #f3f8f4;
+  border-radius: 10px;
+  border: 1px solid #29cc8b;
+  padding: 7px 20px;
+  font-weight:500;
+
+}
+
+.btns-of-annualRequest .btn2
+{
+  width: 100px;
+  background-color: #29cc8b;
+  border-radius: 10px;
+  border: 1px solid #29cc8b;
+  padding: 7px 20px;
+  font-weight:500;
+}
+
+@media (max-height: 768px) { /* تعديل لعرض الأزرار على الشاشات الصغيرة */
+  .btns-of-annualRequest {
+    padding-bottom: 10px;
+  }}
+
+/*!   Annual Leave Request في ال  button اخــــــــــــــــــــــر اتنـــــــــين */
 
 
 
