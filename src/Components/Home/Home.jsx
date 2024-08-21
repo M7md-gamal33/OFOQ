@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import Style from "./Home.module.css";
 import { HomeContext } from "../../HomeContext/HomeContext";
+import PopUp from "../PopUP/PopUP";
 
 export default function Home() {
   // const [isHover, setisHover] = useState(false);
@@ -16,7 +17,20 @@ export default function Home() {
     setisHover(newHoverState);
   };
 
-   let {changeShowDialog} = useContext(HomeContext)
+   //TODO let {changeShowDialog} = useContext(HomeContext)
+
+   //! الـــــــــــــجديــــــــــــــــــد
+   //! Props واستخدمت ال  HomeContext استغنيت عن ال 
+   const [ShowDialog, setShowDialog] = useState(false);
+
+    function changeShowDialog(){
+        setShowDialog(true);
+        
+    }
+
+    function close(){
+      setShowDialog(false)
+    }
 
   return (
     <>
@@ -80,6 +94,8 @@ export default function Home() {
             ></i>
           </div>
         </div>
+
+              {ShowDialog? <PopUp title="Annual Leave Request" close={close}/>:""}
 
         <div className="col-3">
           <div

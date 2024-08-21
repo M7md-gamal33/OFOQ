@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import Style from './PopUP.module.css'
-import { HomeContext } from '../../HomeContext/HomeContext'
 import AnnualImg from '../../Images/Screenshot 2024-06-03 065327.png'
 
 import format from 'date-fns/format';
@@ -11,14 +10,11 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { Calendar, DateRange } from 'react-date-range';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import RequestSuccessfully from '../RequestSuccessfully/RequestSuccessfully';
 
-export default function PopUp() {
+export default function PopUp({title , close }) {
 
-  let {ShowDialog , setShowDialog} = useContext(HomeContext)
-
-  function close(){
-    setShowDialog(false)
-  }
+  
 
   function handleBoxClick(event) {
     event.stopPropagation(); // منع إغلاق النافذة عند النقر داخل الـ box
@@ -95,15 +91,25 @@ export default function PopUp() {
   }
   // ReactQuill تبع ال ........................
 
+
+  const [showPopUp, setShowPopUp] = useState(true);
+  const [screenSuccessfully, setScreenSuccessfully] = useState(false);
+    
+    function changeShowDialog(){
+        setScreenSuccessfully(true);
+        setShowPopUp(false);
+
+    }
+    
+
+    
   return <>
-
-  {ShowDialog? 
-
-    <section onClick={ close} className="light-box">
+    {showPopUp? <>
+      <section onClick={ close} className="light-box">
         <div onClick={ handleBoxClick } className="box-data rounded-1 shadowBox">
 
           <div className="under-line100 d-flex justify-content-between p-3">
-            <h6>Annual Leave Request</h6>
+            <h6>{title}</h6>
             <i onClick={close} className="pointer first-number-color fa-solid fa-xmark"></i>
           </div>
 
@@ -167,13 +173,25 @@ export default function PopUp() {
           
           {!openCalendar? <div className="uper-line1 btns-of-annualRequest d-flex justify-content-end align-items-center">
                     <button onClick={ close} className="btn1 mt-2 me-3 first-number-color">Cancel</button>
-                    <button className="btn2 mt-2 me-4 text-white">Send</button>
+                    <button onClick={() => 
+                      {changeShowDialog();}} 
+                      className="btn2 mt-2 me-4 text-white">Send</button>
                 </div>: ""}
 
         </div>
     </section>
+    </>:""}
+      
+    
+      
 
-  :""}  
+      
+    
+ 
+    
+    {screenSuccessfully? <RequestSuccessfully setShowPopUp={setShowPopUp} close={close} title="Leave Request"/>:""}
+
+  
 
   </>
   

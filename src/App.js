@@ -7,6 +7,7 @@ import Leaves from './Components/Leaves/Leaves'
 import Reports from './Components/Reports/Reports'
 import HomeContextProvider from "./HomeContext/HomeContext";
 import PopUp from "./Components/PopUP/PopUP";
+import RequestSuccessfully from "./Components/RequestSuccessfully/RequestSuccessfully";
 
 let x = createBrowserRouter([
   {
@@ -17,7 +18,8 @@ let x = createBrowserRouter([
       { path: "mydata", element: <MyData /> },
       {path:"leaves" , element:<Leaves/>},
       {path:'reports' , element:<Reports/>},
-      {path:'PopUp' , element:<PopUp/>}
+      {path:'PopUp' , element:<PopUp/>},
+      {path:'requestSuccessfully' , element:<RequestSuccessfully/>}
     ],
   },
 ]);
