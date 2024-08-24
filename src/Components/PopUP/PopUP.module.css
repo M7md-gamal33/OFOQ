@@ -1,1 +1,96 @@
-.PopUP {}
+.box_data_employeeRequest{
+    width: 43%;
+    height: 95vh;
+    background-color: #FFFFFF;
+    overflow:auto ;
+}
+
+.custom_quill_editor_employeeRequest {
+    margin-bottom: 1px;
+}
+
+.textArea{
+    background-color: #FCFCFD !important;
+    border: #F0F3F6 2px solid !important;
+    height: 100px;
+    resize: none;
+}
+.textArea::placeholder{
+    font-style: normal !important;   
+    color: #767679 !important;
+    font-size: 15px !important;
+}
+.textArea:focus{
+    border-color: #29cc8b !important; 
+    box-shadow: 0 0 0 1px #29cc8b !important;
+    outline: none !important;
+}
+
+
+
+/*! ...... employeeRequest الي في ال dropdown الي هو ال select تبع ال ...... */
+.select_style
+{
+    width: 100%;
+
+    [class$="-placeholder"] {
+        font-style: normal !important;   
+        color: #767679 !important;
+        font-size: 15px !important;
+        padding-left: 4px;
+    }
+
+    [class$="-clearIndicator"] {
+        color: brown !important;
+    }
+
+    [class$="-control"] {
+        border: #F0F3F6 2px solid !important;
+        background-color: #FCFCFD !important;
+        padding: 3px;
+        border-radius: 16px;
+    }
+
+    [class$="-menu"] {
+        margin-top: 1px;
+        border-radius: 16px;
+        background-color: #FCFCFD !important;
+        padding: 10px;    
+    }
+
+    [class$="-indicatorSeparator"] {
+        display: block;
+        background-color: #F0F3F6 !important;
+    }
+
+    [class$="-option"] {
+        color: black !important;
+    }
+
+    [class$="-control"] {
+        height: 50px;
+    }
+
+}
+.select_style [class$="-control"]:focus-within {
+    border-color: #29cc8b !important; 
+    box-shadow: 0 0 0 1px #29cc8b !important;
+}
+/*! ...... employeeRequest الي في ال dropdown الي هو ال select تبع ال ...... */
+
+
+/* [class$="-menuList"] {
+
+    }
+    [class$="-group"] {
+
+    }
+*/
+
+
+
+
+
+
+
+

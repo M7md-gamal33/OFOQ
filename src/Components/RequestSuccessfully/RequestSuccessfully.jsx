@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Style from './RequestSuccessfully.module.css'
 import AnnualLeave from '../../Images/Capture.PNG'
 
-export default function RequestSuccessfully({setShowPopUp , close ,title}) {
+export default function RequestSuccessfully({setShowPopUp , close ,title , tmm}) {
   // let {close , ShowDialog} = useContext(HomeContext);
 
   function handleBoxClick(event) {
@@ -24,10 +24,10 @@ export default function RequestSuccessfully({setShowPopUp , close ,title}) {
   return <>
   {showSuccess?<>
     <section onClick={ exit} className="light-box">
-      <div onClick={ handleBoxClick } className={`rounded-1 shadowBox ${Style.content} ${Style.box_data_successfully} ${isVisible? Style.show: Style.hide}`}>
+      <div onClick={ handleBoxClick } className={`rounded-1 shadowBox ${Style.content} ${Style.box_data_successfully} ${tmm? Style.heightBoxDataEmployee :""} ${isVisible? Style.show: Style.hide}`}>
 
-        <div className="under-line100 d-flex justify-content-between px-3 pt-4 pb-0">
-          <h6>{title}</h6>
+        <div className="d-flex justify-content-between align-items-center px-3 pt-3 pb-0">
+          <h6 className={Style.titleStyle}>{title}</h6>
           <i onClick={exit} className="pointer fs-5 first-number-color fa-solid fa-xmark"></i>
         </div>
 
@@ -36,7 +36,8 @@ export default function RequestSuccessfully({setShowPopUp , close ,title}) {
         </div>
 
         <div className={`text-center ${Style.under_line_successfully}`}>
-          <h5>Your Request has been sent Successfully</h5>
+          <h5 className={tmm? "pb-2" :""}>Your Request has been sent Successfully</h5>
+          {tmm? <span className={Style.styleOfSpan}>You Can Track Your Request In "My Requests" Tap</span> : ""}
         </div>
 
         <div className="d-flex justify-content-end me-3">

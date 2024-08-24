@@ -333,11 +333,15 @@ body {
   filter: drop-shadow(0px 0px 10px #b9bbbc);
 }
 
-@media (min-width: 1200px) {
+
+/*! يختفي لما الشاشه تكبر x الي تحت العنوان وعلامه  PopUP ده الي بيخلي السطر الي تحت التـــلاتـــه  */
+/* @media (min-width: 1200px) {
   .under-line100::after{
     opacity: 0;
   }
-}
+} */
+/*! يختفي لما الشاشه تكبر x الي تحت العنوان وعلامه  PopUP ده الي بيخلي السطر الي تحت التـــلاتـــه  */
+
 
 .first-popup-word {
   color: #767679 !important;
@@ -363,39 +367,60 @@ body {
   border: #F0F3F6 2px solid;
 }
 
+.input-group-annual input:focus-within{
+    border-color: #29cc8b !important; 
+    box-shadow: 0 0 0 1px #29cc8b !important;
+    outline: none !important;
+}
 
-@media (max-width: 1070px) {.input-group-annual input {
-  font-size: 15px;
-}  }
-@media (max-width: 1025px) {.input-group-annual input {
+
+@media (max-width: 1155px) {.input-group-annual input {
   font-size: 14px;
 }  }
-@media (max-width: 977px) {.input-group-annual input {
+@media (max-width: 1055px) {.input-group-annual input {
   font-size: 13px;
 }  }
-@media (max-width: 930px) {.input-group-annual input {
+@media (max-width: 1005px) {.input-group-annual input {
   font-size: 12px;
 }  }
-@media (max-width: 890px) {.input-group-annual input {
+
+@media (max-width: 953px) {.input-group-annual input {
   font-size: 11px;
 }  }
-@media (max-width: 850px) {.input-group-annual input {
-  font-size: 10px;
-}  }
-@media (max-width: 800px) {.input-group-annual input {
+
+@media (max-width: 903px) {.input-group-annual input {
   font-size: 9px;
 }  }
+
+@media (max-width: 805px) {.input-group-annual input {
+  font-size: 8px;
+}  }
+
 @media (max-width: 767px) {.input-group-annual input {
   font-size: 14px;
 }  }
-@media (max-width: 665px) {.input-group-annual input {
+
+@media (max-width: 724px) {.input-group-annual input {
+  font-size: 13px;
+}  }
+
+@media (max-width: 690px) {.input-group-annual input {
   font-size: 12px;
 }  }
-@media (max-width: 600px) {.input-group-annual input {
+@media (max-width: 655px) {.input-group-annual input {
+  font-size: 11px;
+}  }
+@media (max-width: 622px) {.input-group-annual input {
   font-size: 10px;
 }  }
-@media (max-width: 540px) {.input-group-annual input {
+@media (max-width: 588px) {.input-group-annual input {
+  font-size: 9px;
+}  }
+@media (max-width: 555px) {.input-group-annual input {
   font-size: 8px;
+}  }
+@media (max-width: 522px) {.input-group-annual input {
+  font-size: 7px;
 }  }
 
 
@@ -422,7 +447,6 @@ body {
 
 
 /*!     "Textarea البتاع الي شبة الـ"      ReactQuill  ديه حاجــــات الــ   */
-
 .custom-quill-editor {
   margin-bottom: 40px;
 }
@@ -437,13 +461,13 @@ body {
 }
 
 .custom-quill-editor .ql-container {
-  border: 2px solid #4CAF50; /* تخصيص الحدود بلون محدد (مثلاً أخضر) */
-  border-radius: 8px; /* إضافة زوايا دائرية */
+  border: 2px solid #4CAF50;
+  border-radius: 8px ;
 }
 
 .ql-toolbar.ql-snow{
-  border: 2px solid #F0F3F6 !important; /* تخصيص الحدود بلون محدد (مثلاً أخضر) */
-  border-radius: 15px; /* إضافة زوايا دائرية */
+  border: 0px solid #F0F3F6 !important; 
+  border-radius: 15px; 
   background-color: #FCFCFD !important;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -455,13 +479,12 @@ body {
   height: 120px;
   background-color: #FCFCFD !important;
   border-radius: 15px; /* إضافة زوايا دائرية */
-  border: 2px solid #F0F3F6 !important; /* تخصيص الحدود بلون محدد (مثلاً أخضر) */
+  border: 0px solid #F0F3F6 !important; 
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-top: 0 !important;
   z-index: 0;
 }
-
 
 .custom-quill-toolbar .ql-toolbar .ql-formats button .ql-stroke {
   stroke:#98A9BC !important; /* هذا للتحكم في لون الأيقونات التي تعتمد على خط الرسم */
@@ -483,6 +506,22 @@ body {
     padding: 0px;
   }}
 
+
+.ql-editor.ql-blank::before{      /*  <----- ReactQuill بتاع ال  Placeholder  ضبط ال  */
+  font-style: normal !important;   
+  color: #767679 !important;
+  font-size: 15px !important;
+}
+
+.borderOfQuill{
+  border-radius: 15px; /* إضافة زوايا دائرية */
+  border: 2px solid #F0F3F6 !important;
+}
+.borderOfQuill:focus-within { 
+    border-color: #29cc8b !important; 
+    box-shadow: 0 0 0 1px #29cc8b !important;
+    outline: none !important;
+}
 /*!     "Textarea البتاع الي شبة الـ"      ReactQuill  ديه حاجــــات الــ   */
 
 
@@ -528,12 +567,6 @@ body {
   padding: 7px 20px;
   font-weight:500;
 }
-
-@media (max-height: 768px) { /* تعديل لعرض الأزرار على الشاشات الصغيرة */
-  .btns-of-annualRequest {
-    padding-bottom: 10px;
-  }}
-
 /*!   Annual Leave Request في ال  button اخــــــــــــــــــــــر اتنـــــــــين */
 
 

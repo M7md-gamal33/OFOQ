@@ -21,15 +21,15 @@ export default function Home() {
 
    //! الـــــــــــــجديــــــــــــــــــد
    //! Props واستخدمت ال  HomeContext استغنيت عن ال 
-   const [ShowDialog, setShowDialog] = useState(false);
+   const [ShowDialog, setShowDialog] = useState(null);
 
-    function changeShowDialog(){
-        setShowDialog(true);
-        
+    function changeShowDialog(dialog){
+        setShowDialog(dialog);
     }
+    
 
     function close(){
-      setShowDialog(false)
+      setShowDialog(null);
     }
 
   return (
@@ -79,7 +79,7 @@ export default function Home() {
       </div>
       {/* the first row----------  */}
       <div className="row mt-4">
-        <div onClick={()=>changeShowDialog()} className="col-3">
+        <div onClick={()=>changeShowDialog("annualLeave")} className="col-3">
           <div
             className="item-one p-3 rounded-3"
             onMouseEnter={() => handleMouseEnter(0)}
@@ -95,9 +95,9 @@ export default function Home() {
           </div>
         </div>
 
-              {ShowDialog? <PopUp title="Annual Leave Request" close={close}/>:""}
+              {ShowDialog === "annualLeave" ? <PopUp title="Annual Leave Request" close={close} placeholder="Annual Leave"/>:""}
 
-        <div className="col-3">
+        <div onClick={()=> changeShowDialog("casualLeave")} className="col-3">
           <div
             className="item-one p-3 rounded-3"
             onMouseEnter={() => handleMouseEnter(1)}
@@ -113,7 +113,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="col-3">
+              {ShowDialog === "casualLeave" ? <PopUp title="Casual Leave Request" close={close} placeholder="Casual Leave"/> :""}
+
+        <div onClick={()=> changeShowDialog("employeeRequest")} className="col-3">
           <div
             className="item-one p-3 rounded-3"
             onMouseEnter={() => handleMouseEnter(2)}
@@ -128,6 +130,9 @@ export default function Home() {
             ></i>
           </div>
         </div>
+
+              {ShowDialog === "employeeRequest" ? <PopUp close={close} tmm="true" title="Employee Request"/> :""}
+
       </div>
       {/*!Second Row--------------- */}
       <div className="row">
