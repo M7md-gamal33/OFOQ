@@ -12,8 +12,10 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import RequestSuccessfully from '../RequestSuccessfully/RequestSuccessfully';
 import Select from 'react-select'
+import { Dropdown } from 'bootstrap';
+import LeaveRequestHours from '../LeaveRequestHours/LeaveRequestHours';
 
-export default function PopUp({title , close , placeholder , tmm}) {
+export default function PopUp({title , close , placeholder , tmm , popLeaves }) {
 
   
 
@@ -116,11 +118,33 @@ export default function PopUp({title , close , placeholder , tmm}) {
       { value: 'leave', label: 'Leave Balance Statement' },
       { value: 'remote', label: 'Remote Work Request' },
     ]
+
+    const optionsLeaves = [
+      { value: 'days', label: 'Anuual Leave' },
+      { value: 'hours', label: 'Anuual Hours' },
+    ]
     const [valueDropdown, setValueDropdown] = useState(null)
+    const [replace, setReplace] = useState(false)
+
+    function handleSelectChange(x)
+    {
+      setValueDropdown(x)
+      if(x?.value === "hours")
+      {
+        setReplace(true);
+      }
+      else
+      {
+        setReplace(false);
+      }
+
+      }
+    
     //! employeeRequest الي في ال dropdown الي هو ال select تبع ال .....................
 
 
-    
+    //TODO .......... Leaves الي في PopUp اكواد ال ...............
+   
   return <>
     {showPopUp? <>
       <section onClick={ close} className="light-box">
@@ -137,18 +161,18 @@ export default function PopUp({title , close , placeholder , tmm}) {
 
                 <form>
                   <div className="d-flex justify-content-between align-items-center first-popup-word ">
-                    <p className={`${tmm? "text-dark fw-medium mb-0 pb-2" : "mb-0 pb-1" }`}>{tmm? "Request Type" : "Leave Type"}</p>
+                    <p className={`${tmm || popLeaves ? "text-dark fw-medium mb-0 pb-2" : "mb-0 pb-1" }`}>{tmm? "Request Type" : "Leave Type"}</p>
                     {!tmm? <p className='mb-0 pb-1'>You have a Balance : <span className="first-number-color fw-medium">14 Days</span></p> : "" }
                   </div>
                   
-                  {tmm?
+                  {(tmm || popLeaves) ?
                    <>
                     <div>
                       <Select
-                        options={options}
-                        defaultValue={valueDropdown}
+                        options={popLeaves? optionsLeaves : options}
+                        defaultValue={(popLeaves? optionsLeaves.find((x) => x.value === "days") : valueDropdown) }
                         placeholder = "Select Request Type"
-                        onChange={setValueDropdown}
+                        onChange={handleSelectChange}
                         isSearchable
                         noOptionsMessage={() => "Data Not Found"}
                         className={Style.select_style}
@@ -159,28 +183,36 @@ export default function PopUp({title , close , placeholder , tmm}) {
                     </div>
                    </>
                   :<>
-                    <div className='input-group-annual d-flex justify-content-end align-items-center'>
-                      <input className="w-100 rounded-4 p-3" type="" disabled placeholder={placeholder} ></input>
+                    <div  className='input-group-annual d-flex justify-content-end align-items-center'>
+                      <input className="w-100 rounded-4 p-3" type="" disabled  placeholder={placeholder} ></input>
                       <i className=" pe-4 fa-solid fa-angle-down"></i> 
                     </div>
                   </>
                   }
                   
 
-                  {!tmm?
+                  {!tmm  ?
                   <>
-                  
-                    <div className="d-flex justify-content-between align-items-center first-popup-word pt-3 ">
-                      <p className='text-dark fw-medium mb-0 pb-1'>Date \ Period</p>
-                      <p className='mb-0 pb-1'>Period : <span className="first-number-color fw-medium">{calculateDays()} Days</span></p>
-                    </div>
+                    {replace? <>
+                                
+                                <LeaveRequestHours/>
+                            </>:
+
+                            <>
+                            <div className="d-flex justify-content-between align-items-center first-popup-word pt-3 ">
+                              <p className='text-dark fw-medium mb-0 pb-1'>Date \ Period</p>
+                              <p className='mb-0 pb-1'>Period : <span className="first-number-color fw-medium">{calculateDays()} Days</span></p>
+                            </div>
 
 
-
-                    <div onClick={()=>{showCalendar()}} className='input-group-annual d-flex justify-content-end align-items-center'>
-                      <input readOnly value={`${formatDate(range[0].startDate , "MM/dd/yyyy")}  -  ${formatDate(range[0].endDate , "MM/dd/yyyy")}`} className="w-100 rounded-4 p-3"   placeholder="Annual Leave" ></input>
-                      <i className="colorOfCal pe-3 fa-solid fa-calendar-days"></i> 
-                    </div>
+                            <div onClick={() => { showCalendar() }} className="input-group-annual d-flex justify-content-end align-items-center">
+                              <input readOnly value={`${formatDate(range[0].startDate)}  -  ${formatDate(range[0].endDate)}`} className="w-100 rounded-4 p-3" placeholder="Annual Leave"></input>
+                              <i className="colorOfCal pe-3 fa-solid fa-calendar-days"></i>
+                            </div>
+                            </>
+                      }
+                    
+                    
 
                   </> 
                   :""}
@@ -204,7 +236,7 @@ export default function PopUp({title , close , placeholder , tmm}) {
                       </>}
                   </div>
 
-                  {tmm ? 
+                  {tmm? 
                     <>
                       <div className="first-popup-word pt-3 ">
                           <p className='text-dark fw-medium mb-0 pb-2'>Comment</p>
@@ -238,11 +270,11 @@ export default function PopUp({title , close , placeholder , tmm}) {
                     <button onClick={ close} className="btn1 mt-2 me-3 first-number-color">Cancel</button>
                     <button onClick={() => 
                       {changeShowDialog();}} 
-                      className="btn2 mt-2 me-4 text-white" type='submit'>Send</button>
+                      className="btn2 mt-2 me-4 text-white" type='submit' >Send</button>
                 </div>: ""}
 
         </div>
-    </section>
+      </section>
     </>:""}
       
     
@@ -257,5 +289,5 @@ export default function PopUp({title , close , placeholder , tmm}) {
   
 
   </>
-  
+
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Style from './Leaves.module.css'
+import PopUp from '../PopUP/PopUP';
 
 export default function Leaves() {
 
@@ -8,20 +9,31 @@ export default function Leaves() {
     setDisplay(!display);
   }
 
+  const [showPopUp, setShowPopUp] = useState(false)
+  function showPopUpInLeaves()
+  {
+    setShowPopUp(true);
+  }
+
+  function close()
+  {
+    setShowPopUp(false)
+  }
   
 
   return <>
     
-    <div className="row pt-1">
+    <div className="row">
         <div className="col-md-12">
-          <div className="bg-white rounded-bottom-4 d-flex justify-content-between align-items-center">
+          <div className="py-1 bg-white rounded-bottom-4 d-flex justify-content-between align-items-center">
 
             <div className="p-4 pb-3 d-flex justify-content-center align-items-center">
              <i className="h4 mx-3 icon-of-myData fs-3 fa-solid fa-person-walking-luggage"></i>{" "}
              <h4 className="">My Leaves</h4>
             </div>
 
-            <button className="btn btn-Of-Leave mx-3 text-white fw-medium rounded-3 ">Request a Leave</button>
+            <button onClick={() => showPopUpInLeaves()} className="btn btn-Of-Leave mx-3 text-white fw-medium rounded-3 ">Request a Leave</button>
+            {showPopUp? <PopUp title="Leave Request" close={close} popLeaves="true" placeholder="Annual Leave"/>:""}
           </div>
         </div>
     </div>
