@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, createHashRouter } from "react-router-dom";
 import "./App.css";
 import Layout from "./Components/Layout/Layout";
 import Home from "./Components/Home/Home";
@@ -9,7 +9,7 @@ import HomeContextProvider from "./HomeContext/HomeContext";
 import PopUp from "./Components/PopUP/PopUP";
 import RequestSuccessfully from "./Components/RequestSuccessfully/RequestSuccessfully";
 
-let x = createBrowserRouter([
+let x = createHashRouter([
   {
     path: "/",
     element: <Layout />,
