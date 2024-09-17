@@ -17,7 +17,12 @@ export default function HomeContextProvider(props){
         setShowDialog(false)
     }
 
-    return <HomeContext.Provider value={{changeShowDialog, ShowDialog, setShowDialog, close}}>
+    //===============================
+    const [opendateTime, setOpenDateTime] = useState(false);
+    const [opendateTime2, setOpenDateTime2] = useState(false);
+  
+
+    return <HomeContext.Provider value={{changeShowDialog, ShowDialog, setShowDialog, close, opendateTime, opendateTime2, setOpenDateTime, setOpenDateTime2}}>
             {props.children}
     </HomeContext.Provider>
 }

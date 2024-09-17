@@ -14,10 +14,13 @@ import RequestSuccessfully from '../RequestSuccessfully/RequestSuccessfully';
 import Select from 'react-select'
 import { Dropdown } from 'bootstrap';
 import LeaveRequestHours from '../LeaveRequestHours/LeaveRequestHours';
+import { HomeContext } from '../../HomeContext/HomeContext';
 
 export default function PopUp({title , close , placeholder , tmm , popLeaves }) {
 
-  
+  const { opendateTime, opendateTime2 } = useContext(HomeContext);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+
 
   function handleBoxClick(event) {
     event.stopPropagation(); // منع إغلاق النافذة عند النقر داخل الـ box
@@ -195,7 +198,7 @@ export default function PopUp({title , close , placeholder , tmm , popLeaves }) 
                   <>
                     {replace? <>
                                 
-                                <LeaveRequestHours/>
+                                <LeaveRequestHours setButtonDisabled={setButtonDisabled}/>
                             </>:
 
                             <>
@@ -228,16 +231,22 @@ export default function PopUp({title , close , placeholder , tmm , popLeaves }) 
                     direction='horizontal'
                     minDate={new Date()}
                     className='w-100 custom-date-range'
-                  />:<> <div className="first-popup-word pt-3 ">
-                          <p className='text-dark fw-medium mb-0 pb-2'>{tmm? "Document Description":"Comment"}</p>
-                        </div>
-              
-                         <ReactQuill placeholder={tmm? "Type Your Document Description":"Jimmyyyyyyyy"} modules={module} className= {` custom-quill-toolbar w-100 borderOfQuill ${tmm? Style.custom_quill_editor_employeeRequest: "custom-quill-editor"}`} theme="snow" value={value} onChange={setValue} />
-                      </>}
+                  />:
+                  !(opendateTime || opendateTime2)?
+                    <>    
+                      <div className="first-popup-word pt-3 ">
+                      <p className='text-dark fw-medium mb-0 pb-2'>{tmm? "Document Description":"Comment"}</p>
+                      </div>
+      
+                      <ReactQuill placeholder={tmm? "Type Your Document Description":"Type Your Comment Here"} modules={module} className= {` custom-quill-toolbar w-100 borderOfQuill ${tmm? Style.custom_quill_editor_employeeRequest: "custom-quill-editor"}`} theme="snow" value={value} onChange={setValue} />
+                    </>:""
+                 
+                  }
                   </div>
 
                   {tmm? 
                     <>
+                    
                       <div className="first-popup-word pt-3 ">
                           <p className='text-dark fw-medium mb-0 pb-2'>Comment</p>
                       </div>
@@ -266,12 +275,11 @@ export default function PopUp({title , close , placeholder , tmm , popLeaves }) 
 
           </div>
           
-          {!openCalendar? <div className={`uper-line1 btns-of-annualRequest d-flex justify-content-end align-items-center ${tmm? "mt-4": ""}`}>
+          {!(openCalendar || opendateTime || opendateTime2)?
+                  <div className={`${replace? "mb-3":""} uper-line1 btns-of-annualRequest d-flex justify-content-end align-items-center ${tmm? "mt-4": ""}`}>
                     <button onClick={ close} className="btn1 mt-2 me-3 first-number-color">Cancel</button>
-                    <button onClick={() => 
-                      {changeShowDialog();}} 
-                      className="btn2 mt-2 me-4 text-white" type='submit' >Send</button>
-                </div>: ""}
+                    <button disabled={buttonDisabled} onClick={() => {changeShowDialog();}} className="btn2 mt-2 me-4 text-white" type='submit' >Send</button>
+                  </div>: ""}
 
         </div>
       </section>

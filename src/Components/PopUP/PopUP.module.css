@@ -70,12 +70,18 @@
     [class$="-control"] {
         height: 50px;
     }
+    
+    [class$="-option"][aria-selected="true"] {
+        background-color: lightblue !important;
+    }
+    
 
 }
 .select_style [class$="-control"]:focus-within {
     border-color: #29cc8b !important; 
     box-shadow: 0 0 0 1px #29cc8b !important;
 }
+
 /*! ...... employeeRequest الي في ال dropdown الي هو ال select تبع ال ...... */
 
 

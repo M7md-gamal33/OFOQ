@@ -1,10 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Style from './LeaveRequestHours.module.css'
 import moment from 'moment/moment';
 import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
+import { HomeContext } from '../../HomeContext/HomeContext';
 
-export default function LeaveRequestHours() {
+export default function LeaveRequestHours({setButtonDisabled}) {
+
+    const { opendateTime, opendateTime2, setOpenDateTime, setOpenDateTime2} = useContext(HomeContext);
+
+
     const [hoursDiff, setHoursDiff] = useState(0);
 
     const [selectedDate, setSelectedDate] = useState(null);
@@ -13,13 +18,14 @@ export default function LeaveRequestHours() {
     const [inputValue, setInputValue] = useState('');
     const [inputValue2, setInputValue2] = useState('');
 
-    const [opendateTime, setOpenDateTime] = useState(false);
-    const [opendateTime2, setOpenDateTime2] = useState(false);
+    // const [opendateTime, setOpenDateTime] = useState(false);
+    // const [opendateTime2, setOpenDateTime2] = useState(false);
 
     const handleDateChange = (date) => {
         if (date.isSameOrAfter(moment(), 'minute')) {
             setSelectedDate(date);
             setInputValue(date.format('dddd DD MMMM YYYY  hh:mm A'));
+            setButtonDisabled(false); // تفعيل الزر بعد اختيار التاريخ
           }
     }; 
     
@@ -28,12 +34,15 @@ export default function LeaveRequestHours() {
         {
             setSelectedDate2(date);
             setInputValue2(moment(date).format('dddd DD MMMM YYYY  hh:mm A'));
+            setButtonDisabled(false); // تفعيل الزر بعد اختيار التاريخ
         }
         else if (selectedDate)
         {
           const updatedDate = selectedDate.clone().add(1, 'hour');
           setSelectedDate2(updatedDate);
           setInputValue2(updatedDate.format('dddd DD MMMM YYYY  hh:mm A'));
+          setButtonDisabled(false); // تفعيل الزر بعد اختيار التاريخ
+
         }
         else
         {
@@ -60,9 +69,12 @@ export default function LeaveRequestHours() {
         return current.isSameOrAfter(moment(), "day");
     };
     const isValidDate2 = (current) => {
-        return current.isSame(selectedDate, 'day');
+        return current.isSameOrAfter(selectedDate, 'day');
     };
-
+    
+    useEffect(() => {
+      setButtonDisabled(true);
+    }, [setButtonDisabled]);
 
     useEffect(() => {
       if (selectedDate && selectedDate2) {
@@ -113,7 +125,7 @@ export default function LeaveRequestHours() {
     </div>
 
     <div onClick={()=>{showCalendar()}} className='input-group-annual d-flex justify-content-end align-items-center'>
-      <input readOnly  value={inputValue} className="w-100 rounded-4 p-3"  placeholder="Annual Leave" /*{moment().format('dddd DD MMMM YYYY  hh:mm A')}*/ ></input>
+      <input readOnly  value={inputValue} className="w-100 rounded-4 p-3"  placeholder="Annual Hours" /*{moment().format('dddd DD MMMM YYYY  hh:mm A')}*/ ></input>
       <i className="colorOfCal pe-3 fa-solid fa-calendar-days"></i> 
     </div>
                   
@@ -127,7 +139,7 @@ export default function LeaveRequestHours() {
       </div>
 
         <div onClick={()=>{showCalendar2()}} className='input-group-annual d-flex justify-content-end align-items-center'>
-          <input readOnly  value={inputValue2} className="w-100 rounded-4 p-3"  placeholder="Annual Leave" ></input>
+          <input readOnly  value={inputValue2} className="w-100 rounded-4 p-3"  placeholder="Annual Hours" ></input>
           <i className="colorOfCal pe-3 fa-solid fa-calendar-days"></i> 
         </div>
                     
