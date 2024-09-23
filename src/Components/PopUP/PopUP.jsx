@@ -15,11 +15,11 @@ import Select from 'react-select'
 import { Dropdown } from 'bootstrap';
 import LeaveRequestHours from '../LeaveRequestHours/LeaveRequestHours';
 import { HomeContext } from '../../HomeContext/HomeContext';
+import toast from 'react-hot-toast';
 
 export default function PopUp({title , close , placeholder , tmm , popLeaves }) {
 
-  const { opendateTime, opendateTime2 } = useContext(HomeContext);
-  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const {selectedDate, selectedDate2, opendateTime, opendateTime2 } = useContext(HomeContext);
 
 
   function handleBoxClick(event) {
@@ -146,7 +146,7 @@ export default function PopUp({title , close , placeholder , tmm , popLeaves }) 
     //! employeeRequest الي في ال dropdown الي هو ال select تبع ال .....................
 
 
-    //TODO ........... Leaves الي في PopUp اكواد ال ...............
+    //TODO .......... Leaves الي في PopUp اكواد ال ...............
    
   return <>
     {showPopUp? <>
@@ -198,7 +198,7 @@ export default function PopUp({title , close , placeholder , tmm , popLeaves }) 
                   <>
                     {replace? <>
                                 
-                                <LeaveRequestHours setButtonDisabled={setButtonDisabled}/>
+                                <LeaveRequestHours/>
                             </>:
 
                             <>
@@ -278,7 +278,16 @@ export default function PopUp({title , close , placeholder , tmm , popLeaves }) 
           {!(openCalendar || opendateTime || opendateTime2)?
                   <div className={`${replace? "mb-3":""} uper-line1 btns-of-annualRequest d-flex justify-content-end align-items-center ${tmm? "mt-4": ""}`}>
                     <button onClick={ close} className="btn1 mt-2 me-3 first-number-color">Cancel</button>
-                    <button disabled={buttonDisabled} onClick={() => {changeShowDialog();}} className="btn2 mt-2 me-4 text-white" type='submit' >Send</button>
+                    <button onClick={() => {
+                      if(!selectedDate && !selectedDate2)
+                      {
+                        toast.error("Please fill out the datetime fields first!")
+                      }
+                      else{
+                        changeShowDialog();
+                      }
+                      }}
+                      className="btn2 mt-2 me-4 text-white" type='submit' >Send</button>
                   </div>: ""}
 
         </div>

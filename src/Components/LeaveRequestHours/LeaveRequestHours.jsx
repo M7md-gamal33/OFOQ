@@ -4,16 +4,17 @@ import moment from 'moment/moment';
 import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 import { HomeContext } from '../../HomeContext/HomeContext';
+import toast from 'react-hot-toast';
 
-export default function LeaveRequestHours({setButtonDisabled}) {
+export default function LeaveRequestHours() {
 
-    const { opendateTime, opendateTime2, setOpenDateTime, setOpenDateTime2} = useContext(HomeContext);
+    const {selectedDate, setSelectedDate, selectedDate2, setSelectedDate2, opendateTime, opendateTime2, setOpenDateTime, setOpenDateTime2} = useContext(HomeContext);
 
 
     const [hoursDiff, setHoursDiff] = useState(0);
 
-    const [selectedDate, setSelectedDate] = useState(null);
-    const [selectedDate2, setSelectedDate2] = useState(null);
+    // const [selectedDate, setSelectedDate] = useState(null);
+    // const [selectedDate2, setSelectedDate2] = useState(null);
 
     const [inputValue, setInputValue] = useState('');
     const [inputValue2, setInputValue2] = useState('');
@@ -25,7 +26,6 @@ export default function LeaveRequestHours({setButtonDisabled}) {
         if (date.isSameOrAfter(moment(), 'minute')) {
             setSelectedDate(date);
             setInputValue(date.format('dddd DD MMMM YYYY  hh:mm A'));
-            setButtonDisabled(false); // تفعيل الزر بعد اختيار التاريخ
           }
     }; 
     
@@ -34,18 +34,16 @@ export default function LeaveRequestHours({setButtonDisabled}) {
         {
             setSelectedDate2(date);
             setInputValue2(moment(date).format('dddd DD MMMM YYYY  hh:mm A'));
-            setButtonDisabled(false); // تفعيل الزر بعد اختيار التاريخ
         }
         else if (selectedDate)
         {
           const updatedDate = selectedDate.clone().add(1, 'hour');
           setSelectedDate2(updatedDate);
           setInputValue2(updatedDate.format('dddd DD MMMM YYYY  hh:mm A'));
-          setButtonDisabled(false); // تفعيل الزر بعد اختيار التاريخ
-
         }
         else
         {
+          toast.error(`"Please fill out "Time From" field first!`)
                               //ال toast
                               //الاولاني الاول يهبل datetime املا ال 
 
@@ -71,10 +69,7 @@ export default function LeaveRequestHours({setButtonDisabled}) {
     const isValidDate2 = (current) => {
         return current.isSameOrAfter(selectedDate, 'day');
     };
-    
-    useEffect(() => {
-      setButtonDisabled(true);
-    }, [setButtonDisabled]);
+
 
     useEffect(() => {
       if (selectedDate && selectedDate2) {

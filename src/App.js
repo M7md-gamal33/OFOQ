@@ -8,6 +8,7 @@ import Reports from './Components/Reports/Reports'
 import HomeContextProvider from "./HomeContext/HomeContext";
 import PopUp from "./Components/PopUP/PopUP";
 import RequestSuccessfully from "./Components/RequestSuccessfully/RequestSuccessfully";
+import { Toaster } from 'react-hot-toast';
 
 let x = createHashRouter([
   {
@@ -29,6 +30,7 @@ function App() {
     <>
       <HomeContextProvider>
         <RouterProvider router={x}></RouterProvider>
+        <Toaster/>
       </HomeContextProvider>
     </>
   );
