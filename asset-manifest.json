@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/OFOQ/static/css/main.feaa411e.css",
-    "main.js": "/OFOQ/static/js/main.b427820c.js",
+    "main.css": "/OFOQ/static/css/main.be0a1eeb.css",
+    "main.js": "/OFOQ/static/js/main.8bb6d752.js",
     "static/js/453.7a88b11d.chunk.js": "/OFOQ/static/js/453.7a88b11d.chunk.js",
     "static/media/fa-solid-900.ttf": "/OFOQ/static/media/fa-solid-900.bacd5de623fb563b961a.ttf",
     "static/media/fa-brands-400.ttf": "/OFOQ/static/media/fa-brands-400.60127e352b7a11f7f1bc.ttf",
@@ -14,12 +14,12 @@
     "static/media/fa-v4compatibility.ttf": "/OFOQ/static/media/fa-v4compatibility.c8e090db312b0bea2aa2.ttf",
     "static/media/fa-v4compatibility.woff2": "/OFOQ/static/media/fa-v4compatibility.cf7f5903d06b79ad60f1.woff2",
     "index.html": "/OFOQ/index.html",
-    "main.feaa411e.css.map": "/OFOQ/static/css/main.feaa411e.css.map",
-    "main.b427820c.js.map": "/OFOQ/static/js/main.b427820c.js.map",
+    "main.be0a1eeb.css.map": "/OFOQ/static/css/main.be0a1eeb.css.map",
+    "main.8bb6d752.js.map": "/OFOQ/static/js/main.8bb6d752.js.map",
     "453.7a88b11d.chunk.js.map": "/OFOQ/static/js/453.7a88b11d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.feaa411e.css",
-    "static/js/main.b427820c.js"
+    "static/css/main.be0a1eeb.css",
+    "static/js/main.8bb6d752.js"
   ]
 }
