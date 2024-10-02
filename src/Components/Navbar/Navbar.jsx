@@ -52,6 +52,15 @@ export default function Navbar() {
 
               <li className="nav-item ms-5 ">
                 <NavLink
+                  to="/attendance"
+                  className="nav-link text-white fw-semibold px-4"
+                >
+                  Attendance
+                </NavLink>
+              </li>
+
+              <li className="nav-item ms-5 ">
+                <NavLink
                   to="/reports"
                   className="nav-link text-white fw-semibold px-4"
                 >

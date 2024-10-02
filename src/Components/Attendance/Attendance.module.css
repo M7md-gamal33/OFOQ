@@ -1,0 +1,27 @@
+.font{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.colorOfIconAttend{
+    color: #FFC94E !important;
+}
+
+.colorOfMyself{
+    color: #9C9CA0 !important;
+}
+
+.btnProblem{
+}
+
+@media (max-width: 466px) {
+    .wrap {
+      flex-wrap: wrap;
+    }
+    .resize {
+        padding-left: 0px !important;
+    }
+  }
+  

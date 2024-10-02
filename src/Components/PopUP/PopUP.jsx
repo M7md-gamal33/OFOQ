@@ -19,7 +19,7 @@ import toast from 'react-hot-toast';
 
 export default function PopUp({title , close , placeholder , tmm , popLeaves }) {
 
-  const {selectedDate, selectedDate2, opendateTime, opendateTime2 } = useContext(HomeContext);
+  const {setSelectedDate, setSelectedDate2, selectedDate, selectedDate2, opendateTime, opendateTime2 } = useContext(HomeContext);
 
 
   function handleBoxClick(event) {
@@ -55,6 +55,13 @@ export default function PopUp({title , close , placeholder , tmm , popLeaves }) 
     setOpenCalendar(!openCalendar);
   }
 
+  const [isDateSelected, setIsDateSelected] = useState(false);
+  const handleDateChange = (item) => {
+    setRange([item.selection]);
+    setIsDateSelected(true); // تغيير الحالة بعد اختيار التواريخ
+  };
+
+
    //! من ضمن ال dateRange------------ 
 
    const handleOutsideClick = (e) => {
@@ -80,6 +87,7 @@ export default function PopUp({title , close , placeholder , tmm , popLeaves }) 
 
    // dateRange دالة لحساب الفرق في الأيام ل 
    const calculateDays = () => {
+    if (!isDateSelected) return 0; // في حال لم يتم اختيار تواريخ، عرض 0
     const start = range[0].startDate;
     const end = range[0].endDate;
     return differenceInDays(end, start) + 1; // +1 لتضمين كل من تاريخ البداية والنهاية
@@ -104,7 +112,8 @@ export default function PopUp({title , close , placeholder , tmm , popLeaves }) 
     function changeShowDialog(){
         setScreenSuccessfully(true);
         setShowPopUp(false);
-
+        setSelectedDate("");
+        setSelectedDate2("");
     }
     
 
@@ -141,7 +150,7 @@ export default function PopUp({title , close , placeholder , tmm , popLeaves }) 
         setReplace(false);
       }
 
-      }
+    }
     
     //! employeeRequest الي في ال dropdown الي هو ال select تبع ال .....................
 
@@ -209,7 +218,11 @@ export default function PopUp({title , close , placeholder , tmm , popLeaves }) 
 
 
                             <div onClick={() => { showCalendar() }} className="input-group-annual d-flex justify-content-end align-items-center">
-                              <input readOnly value={`${formatDate(range[0].startDate)}  -  ${formatDate(range[0].endDate)}`} className="w-100 rounded-4 p-3" placeholder="Annual Leave"></input>
+                              <input readOnly value = 
+                                              { isDateSelected ? `${formatDate(range[0].startDate)} - ${formatDate(range[0].endDate)}`
+                                                : '' 
+                                              } 
+                                     className="w-100 rounded-4 p-3" placeholder="Select Date / Period"></input>
                               <i className="colorOfCal pe-3 fa-solid fa-calendar-days"></i>
                             </div>
                             </>
@@ -224,7 +237,7 @@ export default function PopUp({title , close , placeholder , tmm , popLeaves }) 
                   <div >
                   {openCalendar? <DateRange
                     editableDateInputs={true}
-                    onChange={item => setRange([item.selection])}
+                    onChange={handleDateChange}
                     moveRangeOnFirstSelection={false}
                     ranges={range}
                     months={2}
@@ -279,9 +292,16 @@ export default function PopUp({title , close , placeholder , tmm , popLeaves }) 
                   <div className={`${replace? "mb-3":""} uper-line1 btns-of-annualRequest d-flex justify-content-end align-items-center ${tmm? "mt-4": ""}`}>
                     <button onClick={ close} className="btn1 mt-2 me-3 first-number-color">Cancel</button>
                     <button onClick={() => {
-                      if(!selectedDate && !selectedDate2)
+                      if(!isDateSelected && !replace && !tmm )
                       {
-                        toast.error("Please fill out the datetime fields first!")
+                        toast.error("Please fill out the date range field first!")
+                        // changeShowDialog(); 
+                      }
+                      else if(!valueDropdown && !isDateSelected){
+                        toast.error("Please select request type!");
+                      }
+                      else if(popLeaves && replace && !selectedDate && !selectedDate2){
+                        toast.error("Please select number of hours!");
                       }
                       else{
                         changeShowDialog();

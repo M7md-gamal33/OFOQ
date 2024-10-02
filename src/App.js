@@ -9,6 +9,7 @@ import HomeContextProvider from "./HomeContext/HomeContext";
 import PopUp from "./Components/PopUP/PopUP";
 import RequestSuccessfully from "./Components/RequestSuccessfully/RequestSuccessfully";
 import { Toaster } from 'react-hot-toast';
+import Attendance from "./Components/Attendance/Attendance";
 
 let x = createHashRouter([
   {
@@ -20,6 +21,7 @@ let x = createHashRouter([
       {path:"leaves" , element:<Leaves/>},
       {path:'reports' , element:<Reports/>},
       {path:'PopUp' , element:<PopUp/>},
+      {path:'attendance' , element:<Attendance/>},
       {path:'requestSuccessfully' , element:<RequestSuccessfully/>}
     ],
   },
