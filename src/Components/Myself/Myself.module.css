@@ -1,3 +1,11 @@
+.greenIcon{
+    color: #29CC8B !important;
+}
+
+.grayarrow{
+    color: #9999A3 !important;
+}
+
 .font{
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
@@ -5,63 +13,10 @@
     font-style: normal;
 }
 
-.colorOfIconAttend{
-    color: #FFC94E !important;
-}
-
-.colorOfMyself{
-    color: #9C9CA0 !important;
-}
-
-.btnProblem{
-}
-
-@media (max-width: 466px) {
-    .wrap {
-      flex-wrap: wrap;
-    }
-    .resize {
-        padding-left: 0px !important;
-    }
-  }
-  
-
-.activelinkk {
-    position: relative;
-    text-decoration: none;
-}
-  
-.activelinkk::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    right: -75%;
-    width: 250%;
-    height: 3px;
-    background-color: #29CC8B !important;
-    transform: translateY(13px) ;
-    opacity: 0;
-    transition: opacity 0.3s linear;
-}
-
-.activelinkk.active::after{
-    opacity: 1;
-}
-  
-.activelinkk.active{
-    color: #29CC8B !important;
-    transition: color 0.3s linear;
-}
-  
-
-
-
-
-
 .select_style
 {
-    width: 90%;
-    margin-top: 0px;
+    width: 20%;
+    margin-top: 1px;
 
     [class$="-control"] {
        display: none;
@@ -104,4 +59,3 @@
     border-color: #29cc8b !important; 
     box-shadow: 0 0 0 1px #29cc8b !important;
 }
-

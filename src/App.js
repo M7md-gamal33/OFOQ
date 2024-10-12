@@ -10,6 +10,9 @@ import PopUp from "./Components/PopUP/PopUP";
 import RequestSuccessfully from "./Components/RequestSuccessfully/RequestSuccessfully";
 import { Toaster } from 'react-hot-toast';
 import Attendance from "./Components/Attendance/Attendance";
+import Myself from "./Components/Myself/Myself";
+import Myemployees from "./Components/Myemployees/Myemployees";
+import Allemployees from "./Components/Allemployees/Allemployees";
 
 let x = createHashRouter([
   {
@@ -21,7 +24,11 @@ let x = createHashRouter([
       {path:"leaves" , element:<Leaves/>},
       {path:'reports' , element:<Reports/>},
       {path:'PopUp' , element:<PopUp/>},
-      {path:'attendance' , element:<Attendance/>},
+      {path:'attendance' , element:<Attendance/> , children: [
+        {index: true, element:<Myself/> },
+        {path: "myemployees", element:<Myemployees/> },
+        {path: "allemployees", element:<Allemployees/> },
+      ]},
       {path:'requestSuccessfully' , element:<RequestSuccessfully/>}
     ],
   },

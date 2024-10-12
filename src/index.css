@@ -570,5 +570,48 @@ body {
 
 
 
+.active-link {
+  position: relative;
+  text-decoration: none;
+}
 
+.active-link.active::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 25%;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  background-color: #29CC8B !important;
+  transform: translateY(5px) ;
+}
 
+/*! css module علشان مش عارف اعمله Attendance ده كود ال */
+.active-linkk {
+  position: relative;
+  text-decoration: none;
+}
+
+.active-linkk::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: -75%;
+  width: 250%;
+  height: 3px;
+  background-color: #29CC8B !important;
+  transform: translateY(13px) ;
+  opacity: 0;
+  transition: opacity 0.3s linear;
+}
+
+.active-linkk.active::after{
+  opacity: 1;
+}
+
+.active-linkk.active{
+  color: #29CC8B !important;
+  transition: color 0.3s linear;
+}
+/*! css module علشان مش عارف اعمله Attendance ده كود ال */
