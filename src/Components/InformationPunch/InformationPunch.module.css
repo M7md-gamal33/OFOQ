@@ -1,0 +1,37 @@
+.font{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.greenColor{
+    color: #29CC8B !important;
+}
+
+.roundedLocation{
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+.mt4{
+    margin-top: 10px;
+}
+
+
+.mt4:hover{
+    background-color: #e3faf1 !important;
+    filter: drop-shadow(1px 1px 10px #9999A3);
+    cursor: pointer;
+    transition: filter 0.5s, background-color 0.5s;
+}
+.arrow{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.5s;
+}
+.mt4:hover .arrow{
+    visibility: visible;
+    opacity: 1; 
+}
+

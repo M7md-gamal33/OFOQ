@@ -4,6 +4,7 @@ import moment from 'moment/moment';
 import Select from 'react-select'
 import PopUp from '../PopUP/PopUP';
 import PopUpPunch from '../PopUpPunch/PopUpPunch';
+import InformationPunch from '../InformationPunch/InformationPunch';
 
 export default function Myself() {
 
@@ -63,7 +64,7 @@ export default function Myself() {
 
 return <>
     
-    <div className="d-flex justify-content-between align-items-center">
+    <div className="d-flex justify-content-between align-items-center mb-4">
       <div className={`d-flex justify-content-center align-items-center py-1 ${Style.greenIcon} ${Style.font}`}>
         <i className="pe-2 fa-solid fa-calendar-days"></i>
         <h1 className="h6 m-0">{formattedDate} - {formattedDate2}</h1>
@@ -94,9 +95,14 @@ return <>
         </div>
         :""
       }
-{punchPopUp === "in"? <PopUpPunch close={close}/> : "" }
-{punchPopUp === "out"? <PopUp title="Casual Leave Request"  placeholder="Casual Leave"/>  : "" }
+      {punchPopUp === "in"? <PopUpPunch close={close}/> : "" }
+      {punchPopUp === "out"? <PopUp title="Casual Leave Request"  placeholder="Casual Leave"/>  : "" }
 
+
+      <InformationPunch className={Style.myCustomClass1} text="Valid Location" attend="IN" colorCustomize={Style.colorCustomize1}/>
+      <InformationPunch className={Style.myCustomClass2} text="Unassigned Location" attend="OUT" colorCustomize={Style.colorCustomize2}/>
+      <InformationPunch className={Style.myCustomClass3} text="Invalid Location" attend="IN" colorCustomize={Style.colorCustomize1}/>
+  
   </>
   
 }

@@ -59,3 +59,27 @@
     border-color: #29cc8b !important; 
     box-shadow: 0 0 0 1px #29cc8b !important;
 }
+
+
+/*TODO    >>>... Myself في ال call الي بعمله informationPunch الي اسمه component استايل ال <<<...    */
+.myCustomClass1{
+    color: #29CC8B !important;
+    background-color: #F4FCF9 !important;
+}
+
+.myCustomClass2{
+    color: #FFC542 !important;
+    background-color: #FFF9EC !important;
+}
+
+.myCustomClass3{
+    color: #FC5A5A !important;
+    background-color: #FFF7F7 !important;
+}
+
+.colorCustomize1{
+    color: #29CC8B !important;
+}
+.colorCustomize2{
+    color: #FC5A5A !important;
+}
