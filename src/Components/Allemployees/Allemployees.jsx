@@ -1,10 +1,11 @@
 import React from 'react'
 import Style from './Allemployees.module.css'
+import Myemployees from '../Myemployees/Myemployees'
 
 export default function Allemployees() {
   return <>
     
-    <h1>Allemployees</h1>
+    <Myemployees/>
 
   </>
   

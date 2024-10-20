@@ -1,1 +1,112 @@
-.Myemployees {}
+.font{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.inputSearch{
+    position: relative;
+    border-radius: 10px;
+}
+
+.magnifier{
+    position: absolute; 
+    color: #767977 !important;
+}
+
+.input{
+    width: 404px;
+    padding: 8px 10px 8px 40px;
+    outline: none;
+    background-color: #FCFCFD !important;
+    border: #E2E8EE 2px solid;
+    border-radius: 13px;
+}
+.inputSearch .input:focus-within{
+    outline: none !important;
+    border-color: #29cc8b !important; 
+    box-shadow: 0 0 0 1px #29cc8b !important;
+}
+
+.input::placeholder{
+    font-size: 13px;
+    color: #A8AAB2 !important;
+}
+
+.greenIcon{
+    color: #29CC8B !important;
+}
+
+.grayarrow{
+    color: #9999A3 !important;
+}
+
+
+
+
+
+.myMargin{
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+.mt4{
+    /* margin-top: 10px; */
+    border-bottom: 3px solid #F4F4F4;
+    /* border-top-left-radius: 16px;
+    border-top-right-radius: 16px; */
+    
+}
+
+
+.mt4:hover{
+    background-color: #e3faf1 !important;
+    cursor: pointer;
+    transition: filter 0.5s, background-color 0.5s;
+}
+.arrow{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.5s;
+}
+.mt4:hover .arrow{
+    visibility: visible;
+    opacity: 1; 
+}
+.mt4:hover .colorOfh{
+    color: #29CC8B !important;
+}
+
+
+
+.detailsOfSpan{
+    color: #C3C3C3 !important;
+    font-size: 15px;
+}
+
+.emptyClass .mt4:first-child{
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    /* margin-top: 20px; */
+
+}
+/* .emptyClass .mt4:first-child:hover{
+    background-color: #e3faf1 !important;
+    filter: drop-shadow(1px 1px 10px #9999A3);
+    cursor: pointer;
+    transition: filter 0.5s, background-color 0.5s;
+} */
+
+.emptyClass{
+    max-height: 100vh !important;
+    overflow: auto;
+    padding-right: 10px !important;
+}
+
+.myCustomClass1{
+    color: #29CC8B !important;
+    background-color: #F4FCF9 !important;
+}
+.colorCustomize1{
+    color: #29CC8B !important;
+}

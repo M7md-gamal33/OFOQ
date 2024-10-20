@@ -75,7 +75,7 @@ export default function Attendance() {
         </div>
     </div>
     
-    <div className = "rounded-4 bg-white my-4 py-2 px-0">
+    <div className = "rounded-4 bg-white mb-4 mt-2 py-2 px-0">
       <div className="row">
 
 
